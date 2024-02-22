@@ -10,32 +10,40 @@
             text-align: center;
             margin-right: 300px;
             font-family: Arial, sans-serif;
+            opacity: 1;
+        }
+        body::before {
+            content: "";
             background-image: url(TECFIL_MATERIA_05_02.webp);
             background-size: cover;
-            background-color: rgba(255, 255, 255, 0);
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.75;
+            z-index: -1;
         }
-
-        
     </style>
 </head>
 <body>
     <h1>SISTEMAS DE MULTAS</h1>
-    Velocidade do carro : <input type="number" name="txtvel" id="txtvel"> km/h
-<input type="button" value="verificar" onclick="calcular()">
-<div id = 'res'>
+    Velocidade do carro (km/h): <input type="number" id="txtvel" />
+    <br />
+    <input type="button" value="verificar" onclick="calcular()" style="margin-top: 15px; cursor: pointer; padding: 5px 10px; border-radius: 5px;">
+    <div id='res'>
 
-</div>  
-
+    </div> 
+</body>
 <script>
     function calcular() {
-        var txtv= document.querySelector('input#txtvel')
-        var res = document.querySelector('div#res')
+        var txtv= document.getElementById('txtvel')
+        var res = document.getElementById('res')
         var vel = Number(txtv.value)
-         res.innerHTML = `<p> sua velocidade atual é de <strong>${vel}km/h</strong> </p>`
-         if(vel > 60) {
-            res.innerHTML += `<p> você está <strong>MULTADO</strong> por excesso de velocidade </p>`
+        res.innerHTML = `<p> sua velocidade atual é de <strong>${vel}km/h</strong> </p>`
+        if(vel > 60) {
+            res.innerHTML += `<p> você está <strong style="color: red;">MULTADO</strong> por excesso de velocidade </p>`
         } 
-}
+    }   
 </script>
-</body>
 </html>
